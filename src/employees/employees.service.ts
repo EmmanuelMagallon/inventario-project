@@ -54,7 +54,7 @@ export class EmployeesService {
       throw new NotFoundException();
     }
 
-    return await this.employeeRepository.save(employeeToUpdate); 
+    return await this.employeeRepository.save(employeeToUpdate);
   }
 
 

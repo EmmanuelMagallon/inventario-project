@@ -4,13 +4,13 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { EmployeesModule } from './employees/employees.module';
 import { ProductsModule } from './products/products.module';
-import * as process from 'node:process';
+import { ConfigModule } from '@nestjs/config';
 
-let ConfigModule;
+import * as process from 'node:process';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot(), // ✅ Ahora se usa correctamente
     TypeOrmModule.forRoot({
       type: "postgres",
       host: process.env.host,
