@@ -53,15 +53,27 @@ export class ProductsService {
 
   update(id: string, updateProductDto: UpdateProductDto) {
     let product = this.findOne(id);
+    this.products.map((product) => {
+      if (product.productid === id) return {
+
+
+        ...product,
+        ...updateProductDto
+
+
+      }
+      return product;
+    } )
     product ={
       ...product,
-        ...updateProductDto
+      ...updateProductDto
+
     }
   }
 
   remove(id: string) {
-    const { productid } = this.findOne(id); // ✅ Se mantiene la estructura, pero aseguramos que id es del mismo tipo que productid
-    this.products = this.products.filter((product) => product.productid !== productid); // ✅ Se elimina el uso de "removeproduct", que no existía
+    const { productid } = this.findOne(id);
+    this.products = this.products.filter((product) => product.productid !== productid);
     return this.products;
   }
 
